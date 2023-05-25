@@ -9,7 +9,7 @@ app.use(express.json());
 const router = express.Router();
 
 app.use('/', router.get('/', (req,res) => {
-	res.status(200).send("<h4>API - CHAT</h4>");
+	res.status(200).send("<h1>API - CHAT</h1>");
 }))
 
 app.use("/sobre", router.get('/sobre', (req,res) => {
