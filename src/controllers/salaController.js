@@ -1,4 +1,4 @@
-const t adsalaModel=require('../models/salaModel');
+const salaModel=require('../models/salaModel');
 let usuarioModel=require('../models/usuarioModel');
 
 exports.get= async (req, res) => {
