@@ -1,7 +1,14 @@
 
 const express = require('express');
 const token = require('./util/token');
-const salaController = require("./controllers/salaController");
+const {
+	get,
+	entrar,
+	enviarMensagem,
+	buscarMensagens,
+	sairSala,
+	criarSala
+  } = require("./controllers/salaController");
 const usuarioController = require("./controllers/usuarioController");
 const app = express();
 app.use(express.urlencoded({extended:true}));
@@ -28,13 +35,13 @@ app.use("/entrar", router.post("/entrar", async (req, res, next) => {
 }))
 
 app.use("/salas",router.get("/salas", async (req, res,next) => {
-		if(await token.checkToken(req.headers.token,req.headers.iduser,req.headers.nick)) {
-		let resp= await salaController.get();
-		res.status(200).send(resp);
+	if(await token.checkToken(req.headers.token,req.headers.iduser,req.headers.nick)) {
+	  let resp= await get();
+	  res.status(200).send(resp);
 	}else{
-		res.status(400).send({msg:"Usuário não autorizado"});
+	  res.status(400).send({msg:"Usuário não autorizado"});
 	}	
-}))
+  }))
 
 app.use("/sala/entrar", router.put("/sala/entrar", async (req, res)=>{
 	if(!token.checkToken(req.headers.token,req.headers.iduser,req.headers.nick)) return false;
@@ -60,7 +67,7 @@ app.use("/sala/sair/", router.put("/sala/sair", async (req, res) => {
 	res.status(200).send(resp);
 }))
 
-app.use("/sala/criar", router.post("/sala/criar", async (req, res) => {
+app.use("/sala/criar", router.put("/sala/criar", async (req, res) => {
     if (!token.checkToken(req.headers.token, req.headers.iduser, req.headers.nick)) return false;
 
     const { nome, tipo } = req.body;
