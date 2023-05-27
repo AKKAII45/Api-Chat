@@ -1,3 +1,4 @@
+
 const express = require('express');
 const token = require('./util/token');
 const salaController = require("./controllers/salaController");
@@ -58,5 +59,19 @@ app.use("/sala/sair/", router.put("/sala/sair", async (req, res) => {
 	let resp= await salaController.sairSala(req.query.idsala, req.headers.iduser);
 	res.status(200).send(resp);
 }))
+
+app.use("/sala/criar", router.post("/sala/criar", async (req, res) => {
+    if (!token.checkToken(req.headers.token, req.headers.iduser, req.headers.nick)) return false;
+
+    const { nome, tipo } = req.body;
+    const sala = await salaController.criarSala(nome, tipo);
+
+    if (sala) {
+        res.status(200).send({ msg: "OK", sala });
+    } else {
+        res.status(500).send({ msg: "Erro ao criar sala" });
+    }
+}));
+
 
 module.exports=app;

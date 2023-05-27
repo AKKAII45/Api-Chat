@@ -1,5 +1,5 @@
 const { MongoClient, ObjectId } = require("mongodb")
-
+const uri = "mongodb+srv://<israel>:<9mJwF9oGgHJm2oP8>@chat.stbdyhb.mongodb.net/<chat>?retryWrites=true&w=majority";
 let singleton;
 
 let connect = async () => {
@@ -50,4 +50,4 @@ module.exports = {
 	findOne,
 	updateOne,
 	deleteOne
-}
+};
