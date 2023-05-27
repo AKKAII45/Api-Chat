@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "51bdd9e2-c5b9-4258-bed6-86bdab36cd44",
+		"name": "API-CHAT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26396880",
+		"_collection_link": "https://bold-crater-578722.postman.co/workspace/ChatAPI~241dc301-99ce-4ffc-8699-24c1fffb9142/collection/26396880-51bdd9e2-c5b9-4258-bed6-86bdab36cd44?action=share&creator=26396880&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Entrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nick\":\"Bob\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/entrar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"entrar"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Entrar",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nick\":\"Bob\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/entrar",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entrar"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"status\": 200,\r\n    \"resp\": {\r\n        \"token\": \"eyJhGCdsidsCidaskj1Ckdi3.\\r\\neyJhGCdsidsCidaskj1Ckdi3lIwyla83KDeiebkwQ\",\r\n        \"idUser\": 3\r\n    }\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mensagens",
+			"item": [
+				{
+					"name": "Enviar mensagem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "nick",
+								"value": "{{nick}}",
+								"type": "text"
+							},
+							{
+								"key": "idUser",
+								"value": "{{idUser}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"msg\": \"Olá\",\r\n    \"idSala\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/sala/mensagem?idSala=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sala",
+								"mensagem"
+							],
+							"query": [
+								{
+									"key": "idSala",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Enviar mensagem",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "nick",
+										"value": "{{nick}}",
+										"type": "text"
+									},
+									{
+										"key": "idUser",
+										"value": "{{idUser}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"msg\": \"Olá\",\r\n    \"idSala\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/sala/mensagem?idSala=3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sala",
+										"mensagem"
+									],
+									"query": [
+										{
+											"key": "idSala",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"status\":200,\r\n    \"msg\":\"OK\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Listar mensagens",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "nick",
+								"value": "{{nick}}",
+								"type": "text"
+							},
+							{
+								"key": "idUser",
+								"value": "{{idUser}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}?idSala=3&timestamp=545654756",
+							"host": [
+								"{{url}}"
+							],
+							"query": [
+								{
+									"key": "idSala",
+									"value": "3"
+								},
+								{
+									"key": "timestamp",
+									"value": "545654756"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Listar mensagens",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									},
+									{
+										"key": "nick",
+										"value": "{{nick}}",
+										"type": "text"
+									},
+									{
+										"key": "idUser",
+										"value": "{{idUser}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}?idSala=3&timestamp=545654756",
+									"host": [
+										"{{url}}"
+									],
+									"query": [
+										{
+											"key": "idSala",
+											"value": "3"
+										},
+										{
+											"key": "timestamp",
+											"value": "545654756"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"status\":200,\r\n    \"msgs\":[\r\n        {\r\n            \"nick\":\"Bob\",\r\n            \"msg\":\"Olá\",\r\n            \"timestamp\":23542352\r\n        },\r\n        {\r\n            \"nick\":\"Zeca\",\r\n            \"msg\":\"Oi!!\",\r\n            \"timestamp\":23542355\r\n        },\r\n        {\r\n            \"nick\":\"Luiz\",\r\n            \"msg\":\"kkkkkkKkKk\",\r\n            \"timestamp\":23542365\r\n        }\r\n\r\n    ],\r\n    \"timestamp\":\"465356675\"\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Salas",
+			"item": [
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhGCdsidsCidaskj1Ckdi3.\\r\\neyJhGCdsidsCidaskj1Ckdi3lIwyla83KDeiebkwQ",
+								"type": "text"
+							},
+							{
+								"key": "nick",
+								"value": "Bob",
+								"type": "text"
+							},
+							{
+								"key": "idUser",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/salas",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"salas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Listar",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhGCdsidsCidaskj1Ckdi3.\\r\\neyJhGCdsidsCidaskj1Ckdi3lIwyla83KDeiebkwQ",
+										"type": "text"
+									},
+									{
+										"key": "nick",
+										"value": "Bob",
+										"type": "text"
+									},
+									{
+										"key": "idUser",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/salas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"salas"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"status\":200,\r\n    \"msg\": \"ok\",\r\n    \"resp\": [\r\n        {\"idSala\": 1, \"sala\": \"Vingadores do java\"},\r\n        {\"idSala\": 2, \"sala\": \"Renegados do twitter\"},\r\n        {\"idSala\": 3, \"sala\": \"Só quero reclamar\"},\r\n        {\"idSala\": 4, \"sala\": \"Genios da INFO\"},\r\n        {\"idSala\": 5, \"sala\": \"Defensores do Javascript\"}    \r\n    ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Entrar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/sala/entrar?idSala=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sala",
+								"entrar"
+							],
+							"query": [
+								{
+									"key": "idSala",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Entrar",
+							"originalRequest": {
+								"method": "GET",
+								"header": []
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"status\":200,\r\n    \"msg\":\"OK\",\r\n    \"resp\":{\r\n        \"idSala\": 2,\r\n        \"nome\":\"Só quero reclamar\"\r\n    }\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Sair",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/sala/sair",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sala",
+								"sair"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Sala",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"teste1\",\r\n    \"tipo\": \"privado\",\r\n    \"chave\": \"chave1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/sala/criar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sala",
+								"criar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
